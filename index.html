@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking - Doubles.sewakamera</title>
+    <style>
+        /* TEMA DEFAULT (DARK MODE) */
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-green: #25D366;
+            --accent-hover: #128C7E;
+            --border-color: #334155;
+            --input-bg: #0f172a;
+            --shadow: rgba(0, 0, 0, 0.5);
+            --placeholder-color: #475569;
+        }
+
+        /* TEMA ADAPTIF JIKA HP USER SETTINGANNYA TERANG (LIGHT MODE) */
+        @media (prefers-color-scheme: light) {
+            :root {
+                --bg-color: #f4f4f9;
+                --card-bg: #ffffff;
+                --text-main: #1e293b;
+                --text-muted: #64748b;
+                --border-color: #cbd5e1;
+                --input-bg: #ffffff;
+                --shadow: rgba(0, 0, 0, 0.1);
+                --placeholder-color: #94a3b8;
+            }
+        }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .form-container {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px var(--shadow);
+            width: 100%;
+            max-width: 460px;
+            border: 1px solid var(--border-color);
+            transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .header-zone {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            margin: 0 0 6px 0;
+            font-size: 28px;
+            letter-spacing: 1.5px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .subtitle {
+            color: var(--accent-green);
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--text-main);
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px 16px;
+            background-color: var(--input-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-main);
+            font-size: 15px;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent-green);
+            box-shadow: 0 0 8px rgba(37, 211, 102, 0.2);
+        }
+
+        textarea {
+            resize: vertical;
+            height: 80px;
+        }
+
+        .row-grid {
+            display: flex;
+            gap: 12px;
+        }
+
+        .row-grid .form-group {
+            flex: 1;
+            margin-bottom: 0;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background-color: var(--accent-green);
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+        }
+
+        button:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+        }
+
+        button:disabled {
+            background-color: var(--border-color);
+            color: var(--text-muted);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        input::placeholder, textarea::placeholder {
+            color: var(--placeholder-color);
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <div class="header-zone">
+        <h2>DOUBLES</h2>
+        <div class="subtitle">Sewakamera Booking Form</div>
+    </div>
+
+    <form id="bookingForm">
+        <div class="form-group">
+            <label>Nama Lengkap:</label>
+            <input type="text" id="nama" required placeholder="Contoh: Musthafa">
+        </div>
+        <div class="form-group">
+            <label>No. WhatsApp (Gunakan 62):</label>
+            <input type="text" id="whatsapp" required placeholder="Contoh: 62812345678">
+        </div>
+        <div class="form-group">
+            <label>Username Instagram:</label>
+            <input type="text" id="instagram" required placeholder="Contoh: @username">
+        </div>
+
+        <div class="form-group">
+            <label>Jaminan Identitas (Pilih 2):</label>
+            <div class="row-grid">
+                <div class="form-group">
+                    <select id="jaminan1" required>
+                        <option value="">Jaminan 1</option>
+                        <option value="KTP">KTP</option>
+                        <option value="KTM">KTM</option>
+                        <option value="SIM">SIM</option>
+                        <option value="KK">KK</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select id="jaminan2" required>
+                        <option value="">Jaminan 2</option>
+                        <option value="KTP">KTP</option>
+                        <option value="KTM">KTM</option>
+                        <option value="SIM">SIM</option>
+                        <option value="KK">KK</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Alamat Domisili:</label>
+            <textarea id="alamat" required placeholder="Tuliskan alamat lengkap sekarang..."></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label>Pilih Alat / Kamera:</label>
+            <select id="alat" required>
+                <option value="">-- Pilih Kamera/Lensa --</option>
+                <option value="Canon EOS 3000D">Canon EOS 3000D</option>
+                <option value="Sony A6400">Sony A6400</option>
+                <option value="Lensa Sony 50mm Lens">Lensa Sony 50mm Lens</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Paket Durasi Sewa:</label>
+            <select id="paket" required>
+                <option value="">-- Pilih Paket Durasi --</option>
+                <option value="6 Jam">6 Jam</option>
+                <option value="12 Jam">12 Jam</option>
+                <option value="24 Jam (1 Hari)">24 Jam (1 Hari)</option>
+                <option value="2 Hari">2 Hari</option>
+                <option value="3 Hari">3 Hari</option>
+                <option value="7 Hari">7 Hari</option>
+            </select>
+        </div>
+
+        <button type="submit" id="btnSubmit">Kirim & Konfirmasi via WA</button>
+    </form>
+</div>
+
+<script>
+    const FORM_FORM = document.getElementById('bookingForm');
+    
+    // Masukkan URL Web App Google Apps Script kamu di sini
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxFxQhWQia9KKWnVFQjfcxS4vGMqZ_iY4ZVa49vNJKShbrYeIdJd0PQo3ddldqPLzON_A/exec"; 
+    
+    // Masukkan nomor WhatsApp Bisnis kamu di sini (Gunakan format 62)
+    const WA_BISNIS = "+6285825514166"; 
+
+    FORM_FORM.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const j1 = document.getElementById('jaminan1').value;
+        const j2 = document.getElementById('jaminan2').value;
+
+        // Validasi agar pilihan jaminan 1 dan jaminan 2 tidak boleh sama
+        if (j1 === j2) {
+            alert("Jaminan 1 dan Jaminan 2 tidak boleh sama! Pilih 2 identitas berbeda.");
+            return;
+        }
+        
+        const btn = document.getElementById('btnSubmit');
+        btn.innerText = "Memproses Booking...";
+        btn.disabled = true;
+
+        const data = {
+            nama: document.getElementById('nama').value,
+            whatsapp: document.getElementById('whatsapp').value,
+            instagram: document.getElementById('instagram').value,
+            jaminan1: j1,
+            jaminan2: j2,
+            alamat: document.getElementById('alamat').value,
+            alat: document.getElementById('alat').value,
+            paket: document.getElementById('paket').value
+        };
+
+        // Kirim ke Sheets
+        fetch(SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        })
+        .then(() => {
+            // Format pesan WhatsApp
+            const textWA = `Halo Doubles.sewakamera, saya mau konfirmasi data booking:%0A%0A` +
+                           `• Nama: ${encodeURIComponent(data.nama)}%0A` +
+                           `• WA: ${encodeURIComponent(data.whatsapp)}%0A` +
+                           `• IG: ${encodeURIComponent(data.instagram)}%0A` +
+                           `• Jaminan: ${encodeURIComponent(data.jaminan1)} %2B ${encodeURIComponent(data.jaminan2)}%0A` +
+                           `• Alamat: ${encodeURIComponent(data.alamat)}%0A` +
+                           `• Alat: ${encodeURIComponent(data.alat)}%0A` +
+                           `• Durasi: ${encodeURIComponent(data.paket)}%0A%0A` +
+                           `Mohon segera diproses ya! Terima kasih.`;
+            
+            window.location.href = `https://wa.me/${WA_BISNIS}?text=${textWA}`;
+        })
+        .catch(error => {
+            alert("Terjadi kesalahan, coba lagi.");
+            console.error(error);
+            btn.innerText = "Kirim & Konfirmasi via WA";
+            btn.disabled = false;
+        });
+    });
+</script>
+
+</body>
+</html>
